@@ -1,0 +1,60 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+
+
+<div class="w-full h-full flex items-center justify-center flex-wrap">
+<div class="carousel w-full sm:w-2/3 lg:w-1/2 h-96 relative m-3">
+ <div id="slide1" class="carousel-item relative w-full">
+   <img src="{% static 'images/slideshow_1.jpeg' %}" class="w-full object-cover" />
+   <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+     <a href="#slide4" class="btn btn-circle">❮</a> 
+     <a href="#slide2" class="btn btn-circle">❯</a>
+   </div>
+ </div> 
+ <div id="slide2" class="carousel-item relative w-full">
+   <img src="{% static 'images/slideshow_2.jpeg' %}" class="w-full object-cover" />
+   <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+     <a href="#slide1" class="btn btn-circle">❮</a> 
+     <a href="#slide3" class="btn btn-circle">❯</a>
+   </div>
+ </div> 
+ <div id="slide3" class="carousel-item relative w-full">
+   <img src="{% static 'images/slideshow_3.jpeg' %}" class="w-full object-cover" />
+   <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+     <a href="#slide2" class="btn btn-circle">❮</a> 
+     <a href="#slide4" class="btn btn-circle">❯</a>
+   </div>
+ </div> 
+ <div id="slide4" class="carousel-item relative w-full">
+   <img src="{% static 'images/slideshow_4.jpeg' %}" class="w-full object-cover" />
+   <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+     <a href="#slide3" class="btn btn-circle">❮</a> 
+     <a href="#slide1" class="btn btn-circle">❯</a>
+   </div>
+ </div>
+</div>
+<div class="hero w-full sm:w-1/2 h-96">
+  <div class="hero-content flex-col lg:flex-row m-3">
+  
+    <div>
+        {% if request.user.is_authenticated %}
+        <h1 class="text-5xl font-bold">Welcome back {{request.user.first_name}}!!!
+            </h1>
+        <p class="py-6">Your role is -  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloremque
+              officiis reiciendis quisquam non numquam soluta eos ea! Dolore consectetur eveniet maxime enim, 
+              minima fugiat voluptate nesciunt culpa repellendus repudiandae!</p>
+        {% else %}
+        <h1 class="text-5xl font-bold">Hey User !!</h1>
+        <p class="py-6">excited !! kindly do login to continue ! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos reiciendis nemo, repudiandae, omnis, architecto amet est sit hic dolorem nam pariatur soluta ea doloribus dolore fuga at praesentium non. Cupiditate?</p>
+        <a class="btn btn-primary" href="{% url "social:begin" "google-oauth2" %}">Login + </a>
+        {% endif %}
+    </div>
+  </div>
+</div>
+</div> 
+
+{% endblock %}
